@@ -318,7 +318,7 @@ def send_query(user_query: str):
             except requests.exceptions.ConnectionError:
                 err_msg = (
                     "❌ **Cannot connect to the backend API.**\n\n"
-                    f"Make sure the FastAPI server is running at `{st.session_state.api_url}`.\n\n"
+                    f"Make sure the FastAPI server is running at `{API_URL}`.\n\n"
                     "```bash\nuvicorn app.main:app --reload --port 8000\n```"
                 )
                 st.error(err_msg)
