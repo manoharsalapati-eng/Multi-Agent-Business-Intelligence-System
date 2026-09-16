@@ -1,4 +1,3 @@
-
 # Multi-Agent Business Intelligence System
 
 A fully local, open-source Multi-Agent BI system powered by **Llama 3.3 70B** (via Groq's free tier), **LangGraph**, **ChromaDB**, **SQLite**, **FastAPI**, and **Streamlit**.
