@@ -166,7 +166,7 @@ with st.sidebar:
         <div style="text-align:center; padding: 1.2rem 0 0.5rem 0;">
             <div style="font-size:2.8rem;">🤖</div>
             <div style="font-size:1.1rem; font-weight:700; color:#58a6ff; margin-top:4px;">BI Assistant</div>
-            <div style="font-size:0.78rem; color:#8b949e; margin-top:2px;">Powered by Llama 3.3 70B</div>
+            <div style="font-size:0.78rem; color:#8b949e; margin-top:2px;">Powered by GPT-OSS 120B</div>
         </div>
         """,
         unsafe_allow_html=True,
