@@ -47,7 +47,7 @@ User Question
 ### 2. Clone & Install
 
 ```bash
-cd path/to/Business_Intelligent
+cd Multi-Agent-Business-Intelligence-System
 pip install -r requirements.txt
 ```
 
@@ -111,7 +111,7 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 ## 📁 Project Structure
 
 ```
-Business_Intelligent/
+cd Multi-Agent-Business-Intelligence-System/
 ├── agents/
 │   ├── router_agent.py         # Classifies query → sql/rag/forecast
 │   ├── sql_agent.py            # SQL generation + guardrails + explanation
