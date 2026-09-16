@@ -57,7 +57,7 @@ pip install -r requirements.txt
 ### 3. Configure Environment
 
 ```bash
-copy env.example .env
+copy .env.example .env
 ```
 
 Edit `.env` and paste your Groq API key:
@@ -129,7 +129,7 @@ Multi-Agent-Business-Intelligence-System/
 │   └── llm_client.py           # Shared Groq API wrapper (single place for model/key config)
 ├── streamlit_app.py            # Streamlit thin-client UI
 ├── requirements.txt
-├── env.example
+├── .env.example
 └── README.md
 ```
 
