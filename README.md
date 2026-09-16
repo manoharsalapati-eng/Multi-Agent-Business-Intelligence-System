@@ -1,6 +1,6 @@
 # Multi-Agent Business Intelligence System
 
-A fully local, open-source Multi-Agent BI system powered by **Llama 3.3 70B** (via Groq's free tier), **LangGraph**, **ChromaDB**, **SQLite**, **FastAPI**, and **Streamlit**.
+A fully local, open-source Multi-Agent BI system powered by **GPT-OSS 120B** (via Groq's free tier), **LangGraph**, **ChromaDB**, **SQLite**, **FastAPI**, and **Streamlit**.
 
 Ask natural-language business questions — the system automatically routes them to the right specialist agent(s), runs them in parallel, and synthesizes a coherent answer.
 
@@ -26,7 +26,7 @@ User Question
 
 | Feature | Details |
 |---|---|
-| **LLM** | Llama 3.3 70B Versatile — Groq free tier |
+| **LLM** | GPT-OSS 120B — Groq free tier |
 | **Orchestration** | LangGraph state machine with parallel agent branches |
 | **Structured DB** | SQLite with 12 months of synthetic sales data |
 | **Vector Store** | ChromaDB (local persistent) + `all-MiniLM-L6-v2` embeddings |
@@ -175,7 +175,7 @@ All configuration is via environment variables in `.env`:
 | Variable | Default | Description |
 |---|---|---|
 | `GROQ_API_KEY` | *(required)* | Your Groq API key |
-| `GROQ_MODEL` | `llama-3.3-70b-versatile` | Groq model name |
+| `GROQ_MODEL` | `GPT-OSS 120B` | Groq model name |
 | `API_URL` | `http://localhost:8000` | Backend URL used by Streamlit |
 | `DB_PATH` | `db.sqlite` | Path to SQLite database file |
 | `CHROMA_PATH` | `chroma_db` | Path to ChromaDB persistent storage |
