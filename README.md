@@ -37,6 +37,7 @@ User Question
 ---
 
 ## 🚀 Quick Start
+**Requirement:** Python 3.10 or higher
 
 ### 1. Get a Free Groq API Key
 
