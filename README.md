@@ -39,6 +39,7 @@ User Question
 ---
 
 ## 🚀 Quick Start
+**Requirement:** Python 3.10 or higher
 
 > **Requires Python 3.10 or higher.** Check yours with `python --version`.
 
