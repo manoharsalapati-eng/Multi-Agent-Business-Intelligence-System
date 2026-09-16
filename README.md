@@ -57,7 +57,7 @@ pip install -r requirements.txt
 ### 3. Configure Environment
 
 ```bash
-copy .env.example .env
+copy env.example .env
 ```
 
 Edit `.env` and paste your Groq API key:
@@ -112,7 +112,7 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 ## 📁 Project Structure
 
 ```
-cd Multi-Agent-Business-Intelligence-System/
+Multi-Agent-Business-Intelligence-System/
 ├── agents/
 │   ├── router_agent.py         # Classifies query → sql/rag/forecast
 │   ├── sql_agent.py            # SQL generation + guardrails + explanation
@@ -129,7 +129,7 @@ cd Multi-Agent-Business-Intelligence-System/
 │   └── llm_client.py           # Shared Groq API wrapper (single place for model/key config)
 ├── streamlit_app.py            # Streamlit thin-client UI
 ├── requirements.txt
-├── .env.example
+├── env.example
 └── README.md
 ```
 
@@ -176,7 +176,7 @@ All configuration is via environment variables in `.env`:
 | Variable | Default | Description |
 |---|---|---|
 | `GROQ_API_KEY` | *(required)* | Your Groq API key |
-| `GROQ_MODEL` | `GPT-OSS 120B` | Groq model name |
+| `GROQ_MODEL` | `openai/gpt-oss-120b` | Groq model name |
 | `API_URL` | `http://localhost:8000` | Backend URL used by Streamlit |
 | `DB_PATH` | `db.sqlite` | Path to SQLite database file |
 | `CHROMA_PATH` | `chroma_db` | Path to ChromaDB persistent storage |
