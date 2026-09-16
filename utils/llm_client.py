@@ -9,7 +9,7 @@ load_dotenv()
 class LLMClient:
     def __init__(self):
         self.api_key = os.getenv("GROQ_API_KEY")
-        self.model = os.getenv("GROQ_MODEL", "llama3-70b-8192")
+        self.model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
         if not self.api_key:
             # We can check if it is set in system env, otherwise raise warning
             # The backend can also raise it when starting

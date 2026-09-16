@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project generated data (seeded locally by data/seed_db.py and data/seed_docs.py)
+db.sqlite
+db.sqlite-journal
+chroma_db/

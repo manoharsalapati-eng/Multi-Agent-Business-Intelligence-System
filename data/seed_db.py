@@ -75,6 +75,10 @@ def seed_database():
     )
     print(f"Seeded {len(customers_data)} customers.")
     
+    # Fixed random seed so inventory levels, seasonality and trends are
+    # reproducible across runs.
+    random.seed(42)
+
     # Products and prices/characteristics
     products = {
         "Widget A": {"price": 25.0, "base_qty": 20, "mult": 1.2},
@@ -87,10 +91,17 @@ def seed_database():
     regions = ["North", "South", "West"]
     
     # Seed Inventory
+    # Two products are deliberately left below their reorder point so the
+    # "what needs restocking?" workflow has something real to find.
+    low_stock_products = {"Widget B", "Gadget Y"}
+
     inventory_data = []
     for prod in products.keys():
-        stock = random.randint(100, 450)
         reorder = random.randint(30, 80)
+        if prod in low_stock_products:
+            stock = random.randint(5, reorder - 5)
+        else:
+            stock = random.randint(120, 450)
         inventory_data.append((prod, stock, reorder))
     cursor.executemany(
         "INSERT INTO inventory (product, stock_level, reorder_point) VALUES (?, ?, ?)",
@@ -104,9 +115,6 @@ def seed_database():
     start_date = today - datetime.timedelta(days=365)
     
     sales_records = []
-    
-    # Set a fixed random seed for reproducible "seasonality" and trends
-    random.seed(42)
     
     current_date = start_date
     day_count = 0

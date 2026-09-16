@@ -20,6 +20,7 @@ Start with:
 
 import os
 import sys
+import time
 
 # Ensure the project root is on sys.path so relative imports work
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -30,6 +31,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 from app.graph import graph, AgentState
+from utils.db_stats import get_dashboard_stats
 
 load_dotenv()
 
@@ -70,6 +72,7 @@ class QueryResponse(BaseModel):
     rag_result: dict | None = None
     forecast_result: dict | None = None
     errors: list = []
+    elapsed_seconds: float = 0.0
 
 
 # ---------------------------------------------------------------------------
@@ -84,6 +87,27 @@ async def root():
 @app.get("/health", tags=["Health"])
 async def health():
     return {"status": "ok"}
+
+
+# ---------------------------------------------------------------------------
+# Dashboard statistics — powers the landing dashboard in the Streamlit UI
+# ---------------------------------------------------------------------------
+
+@app.get("/stats", tags=["Dashboard"])
+async def stats_endpoint():
+    """
+    Returns headline business metrics straight from SQLite.
+
+    No LLM call and no API key needed, so the dashboard renders instantly when
+    the UI loads.
+    """
+    try:
+        return get_dashboard_stats()
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to read dashboard statistics: {str(e)}",
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -119,6 +143,7 @@ async def query_endpoint(request: QueryRequest):
         "errors": [],
     }
 
+    started = time.perf_counter()
     try:
         final_state = graph.invoke(initial_state)
     except Exception as e:
@@ -135,4 +160,5 @@ async def query_endpoint(request: QueryRequest):
         rag_result=final_state.get("rag_result"),
         forecast_result=final_state.get("forecast_result"),
         errors=final_state.get("errors", []),
+        elapsed_seconds=round(time.perf_counter() - started, 2),
     )
